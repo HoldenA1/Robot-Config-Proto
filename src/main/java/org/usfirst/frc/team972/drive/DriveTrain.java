@@ -35,7 +35,7 @@ public class DriveTrain {
 			l.set(leftSideSpeed);
 		}
 		for (Motor r: rightSide) {
-			r.set(rightSideSpeed);
+			r.set(-rightSideSpeed);
 		}
 	}
 
