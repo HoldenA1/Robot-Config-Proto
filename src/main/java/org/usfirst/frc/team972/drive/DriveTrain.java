@@ -15,16 +15,16 @@ public class DriveTrain {
 		leftSide = new Motor[motorCount/2];
 		
 		// Initializes the array of motors correctly
-		for (int i = 0; i < motors.length; i++) {
+		for (int i = 0; i < motorCount; i++) {
 			int motorID = Integer.parseInt(motorIDs.substring(i*2, i*2+1));			
 			motors[i] = new Motor(motorType, motorID);
 		}
 	
 		// Sets up the left and right sides
-		for (int i = 0; i < motors.length/2; i++) {
+		for (int i = 0; i < motorCount/2; i++) {
 			leftSide[i] = motors[i];
 		}
-		for (int i = motors.length/2; i < motors.length; i++) {
+		for (int i = motorCount/2; i < motorCount; i++) {
 			rightSide[i] = motors[i];
 		}
 		
