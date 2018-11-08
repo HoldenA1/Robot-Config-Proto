@@ -21,7 +21,7 @@ public class Motor {
 			spark = new Spark(ID);
 			this.type = MotorType.SPARK;
 			break;
-		case "victor":
+		case "Victor":
 			victor = new Victor(ID);
 			this.type = MotorType.VICTOR;
 			break;

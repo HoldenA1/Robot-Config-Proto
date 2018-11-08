@@ -12,7 +12,7 @@ public class XMLReader {
 	
 	// Set these so the file goes where you want it on the roborio
 	String userHomeFolder = System.getProperty("user.home");
-	String homeDir = userHomeFolder + "/Desktop/robot_config";
+	String homeDir = userHomeFolder + "/home/lvuser/config";
 	String filename;
 	
 	Document dom;
