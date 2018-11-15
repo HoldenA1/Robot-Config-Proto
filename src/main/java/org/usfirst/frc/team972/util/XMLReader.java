@@ -9,10 +9,7 @@ import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
 public class XMLReader {
-	
-	// Set these so the file goes where you want it on the roborio
-	String userHomeFolder = System.getProperty("user.home");
-	String homeDir = userHomeFolder + "/home/lvuser/config";
+	String homeDir = "/home/lvuser/config";
 	String filename;
 	
 	Document dom;

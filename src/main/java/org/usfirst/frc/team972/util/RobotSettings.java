@@ -2,7 +2,7 @@ package org.usfirst.frc.team972.util;
 
 public enum RobotSettings {
 	// To add a setting just write the setting name, then for parameters put the tag, then the default value
-	DRIVE_MOTOR_TYPE("driveMotorType", "Talon"),
+	DRIVE_MOTOR_TYPE("driveMotorType", "CANTalon"),
 	DRIVE_MOTOR_COUNT("driveMotorCount", "4"),
 	DRIVE_MOTOR_IDS("driveMotorIDs", "1,2,3,4");
 	

@@ -24,8 +24,8 @@ public class DriveTrain {
 		for (int i = 0; i < motorCount/2; i++) {
 			leftSide[i] = motors[i];
 		}
-		for (int i = motorCount/2; i < motorCount; i++) {
-			rightSide[i] = motors[i];
+		for (int i = 0; i < motorCount/2; i++) {
+			rightSide[i] = motors[i+motorCount/2];
 		}
 		
 	}
