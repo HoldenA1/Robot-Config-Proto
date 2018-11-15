@@ -11,8 +11,8 @@ For 2019+, GradleRIO is the official build system for the _FIRST_ Robotics Compe
 Other IDEs like IntelliJ IDEA, Eclipse, Visual Studio, and CLion are also supported, unofficially. You may also use this tool exclusively from the command line, allowing use of any IDE or text editor (like Sublime Text, Atom or Vim).
 
 ## TODO
-[] Add sensing to remove the need for first-time setup
-[] Add more features (IMU, NAVX)
+  - [ ] Add sensing to remove the need for first-time setup
+  - [ ] Add more features (IMU, NAVX)
 
 ## Commands
 Windows Users: It is recommended to use Powershell instead of CMD.
