@@ -1,3 +1,7 @@
+# TODO
+  - [ ] Add sensing to remove the need for first-time setup
+  - [ ] Add more features (IMU, NAVX)
+
 # GradleRIO
 GradleRIO is a powerful Gradle Plugin that allows teams competing in the FIRST
 robotics competition to produce and build their code.
@@ -9,10 +13,6 @@ GradleRIO works with Java and C++ (and others!), on Windows, Mac and Linux. Grad
 For 2019+, GradleRIO is the official build system for the _FIRST_ Robotics Competition! The officially supported IDE is Visual Studio Code (VSCode), using the WPILib extension.
 
 Other IDEs like IntelliJ IDEA, Eclipse, Visual Studio, and CLion are also supported, unofficially. You may also use this tool exclusively from the command line, allowing use of any IDE or text editor (like Sublime Text, Atom or Vim).
-
-## TODO
-  - [ ] Add sensing to remove the need for first-time setup
-  - [ ] Add more features (IMU, NAVX)
 
 ## Commands
 Windows Users: It is recommended to use Powershell instead of CMD.
