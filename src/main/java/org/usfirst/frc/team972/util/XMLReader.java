@@ -5,7 +5,9 @@ import javax.xml.parsers.*;
 import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import org.w3c.dom.*;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 public class XMLReader {
@@ -148,6 +150,21 @@ public class XMLReader {
 	    } catch (ParserConfigurationException pce) {
 	        System.out.println("UsersXML: Error trying to instantiate DocumentBuilder " + pce);
 	    }
+	}
+	
+	/**
+	 * Run this if you change the RobotSettings file at all, but only run it once
+	 */
+	public void purgeXML() {	
+		File robotDTD = new File(homeDir + "/" + filename + ".dtd");
+		
+		// erases config files
+		if (robotConfig.exists()) {
+			robotConfig.delete();
+		}
+		if (robotDTD.exists()) {
+			robotDTD.delete();
+		}
 	}
 	
 	private String getTextValue(String def, Element doc, String tag) {

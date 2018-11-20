@@ -1,6 +1,7 @@
 package org.usfirst.frc.team972.drive;
 
 import org.usfirst.frc.team972.util.*;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DriveTrain {
 	Motor[] motors, leftSide, rightSide;
@@ -28,6 +29,19 @@ public class DriveTrain {
 			rightSide[i] = motors[i+motorCount/2];
 		}
 		
+	}
+	
+	// Only works with a talon drivetrain
+	public void logOutputCurrent() {
+		double currentSum = 0;
+		for (int i = 0; i < motors.length; i++) {
+			currentSum += motors[i].getOutputCurrent();
+		}
+		SmartDashboard.putNumber("avg drivetrain current draw", currentSum/motors.length);
+	}
+	
+	// TODO
+	private void interpolateValues() {
 	}
 	
 	public void driveSides(double leftSideSpeed, double rightSideSpeed) {

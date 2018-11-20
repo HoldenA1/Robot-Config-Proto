@@ -45,6 +45,16 @@ public class Motor {
 		}
 	}
 	
+	/**
+	 * This method only works on talons
+	 */
+	public double getOutputCurrent() {
+		if (type == MotorType.TALON)
+			return talon.getOutputCurrent();
+		else
+			return -1;
+	}
+	
 	private enum MotorType {
 		TALON, SPARK, VICTOR;
 	}
