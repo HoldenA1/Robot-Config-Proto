@@ -2,7 +2,7 @@
   - [ ] Add sensing to remove the need for first-time setup
   - [ ] Add more features (IMU, NAVX)
 
-# GradleRIO
+## GradleRIO
 GradleRIO is a powerful Gradle Plugin that allows teams competing in the FIRST
 robotics competition to produce and build their code.
 
