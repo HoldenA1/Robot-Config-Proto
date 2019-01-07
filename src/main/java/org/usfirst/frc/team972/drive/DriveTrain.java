@@ -1,6 +1,7 @@
 package org.usfirst.frc.team972.drive;
 
 import org.usfirst.frc.team972.util.*;
+import org.usfirst.frc.team972.util.Motor.MotorType;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DriveTrain {
@@ -8,14 +9,14 @@ public class DriveTrain {
 	
 	public DriveTrain(XMLReader reader) {
 		String motorIDs = reader.parseXML(RobotSettings.DRIVE_MOTOR_IDS);
-		String motorType = reader.parseXML(RobotSettings.DRIVE_MOTOR_TYPE);
+		MotorType motorType = Motor.getMotorType(reader.parseXML(RobotSettings.DRIVE_MOTOR_TYPE));
 		int motorCount = Integer.parseInt(reader.parseXML(RobotSettings.DRIVE_MOTOR_COUNT));
 		
 		motors = new Motor[motorCount];
 		rightSide = new Motor[motorCount/2];
 		leftSide = new Motor[motorCount/2];
 		
-		// Initializes the array of motors correctly
+		// Initializes the array of motors
 		for (int i = 0; i < motorCount; i++) {
 			int motorID = Integer.parseInt(motorIDs.substring(i*2, i*2+1));			
 			motors[i] = new Motor(motorType, motorID);
@@ -31,17 +32,15 @@ public class DriveTrain {
 		
 	}
 	
-	// Only works with a talon drivetrain
+	/**
+	 * Only use if drive motor type is TALON
+	 */
 	public void logOutputCurrent() {
 		double currentSum = 0;
 		for (int i = 0; i < motors.length; i++) {
 			currentSum += motors[i].getOutputCurrent();
 		}
 		SmartDashboard.putNumber("avg drivetrain current draw", currentSum/motors.length);
-	}
-	
-	// TODO
-	private void interpolateValues() {
 	}
 	
 	public void driveSides(double leftSideSpeed, double rightSideSpeed) {

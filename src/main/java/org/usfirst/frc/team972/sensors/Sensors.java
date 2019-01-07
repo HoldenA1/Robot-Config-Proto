@@ -8,9 +8,11 @@ public class Sensors {
 	// For now this number is a static two
 	final int DRIVE_ENCODER_COUNT = 2;
 	// Left is the first and right is the second
-	Encoder[] driveEncoders = new Encoder[DRIVE_ENCODER_COUNT];
+	Encoder[] driveEncoders;
 	
-	public Sensors(XMLReader reader) {
+	public void setUpDriveEncoders(XMLReader reader) {
+		driveEncoders = new Encoder[DRIVE_ENCODER_COUNT];
+		
 		String encoderChannels = reader.parseXML(RobotSettings.DRIVE_ENCODER_CHANNELS);
 		
 		// Sets up the encoders

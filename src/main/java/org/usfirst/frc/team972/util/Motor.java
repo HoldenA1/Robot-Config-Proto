@@ -1,4 +1,4 @@
-package org.usfirst.frc.team972.drive;
+package org.usfirst.frc.team972.util;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -10,25 +10,23 @@ public class Motor {
 	Victor victor;
 	MotorType type;
 	
-	public Motor(String type, int ID) {
+	public Motor(MotorType type, int ID) {
 		switch (type) {
-		case "CANTalon":
+		case TALON:
 			talon = new WPI_TalonSRX(ID);
 			talon.set(ControlMode.PercentOutput, 0);
-			this.type = MotorType.TALON;
 			break;
-		case "Spark":
+		case SPARK:
 			spark = new Spark(ID);
-			this.type = MotorType.SPARK;
 			break;
-		case "Victor":
+		case VICTOR:
 			victor = new Victor(ID);
-			this.type = MotorType.VICTOR;
 			break;
 		default:
 			System.out.println("ERROR! INVALID MOTOR TYPE!");
 			break;
 		}
+		this.type = type;
 	}
 	
 	public void set(double speed) {
@@ -55,7 +53,20 @@ public class Motor {
 			return -1;
 	}
 	
-	private enum MotorType {
+	public static MotorType getMotorType(String readerOutput) {
+		switch (readerOutput) {
+		case "TALON":
+			return MotorType.TALON;
+		case "SPARK":
+			return MotorType.SPARK;
+		case "VICTOR":
+			return MotorType.VICTOR;
+		default:
+			return null;
+		}
+	}
+	
+	public enum MotorType {
 		TALON, SPARK, VICTOR;
 	}
 

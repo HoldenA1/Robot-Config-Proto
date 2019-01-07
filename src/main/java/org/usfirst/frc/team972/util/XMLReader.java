@@ -24,41 +24,7 @@ public class XMLReader {
 	public XMLReader(String filename) {
 		this.filename = filename;
 		
-		new File(homeDir).mkdir();
-		robotConfig = new File(homeDir + "/" + filename + ".xml");
-		
-		// instance of a DocumentBuilderFactory
-	    dbf = DocumentBuilderFactory.newInstance();
-		
-		try {
-			// create files if they don't exist
-			if (!robotConfig.exists()) {
-				robotConfig.createNewFile();
-				// sets up the XML file
-				appendXML(RobotSettings.DRIVE_MOTOR_TYPE, RobotSettings.DRIVE_MOTOR_TYPE.getDefualt());
-				new File(homeDir + "/" + filename + ".dtd").createNewFile();
-				PrintWriter out = new PrintWriter(new BufferedWriter(
-						new FileWriter(homeDir + "/" + filename + ".dtd", true)));
-				
-				out.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
-				String temp = "<!ELEMENT config (";
-				for (RobotSettings setting: RobotSettings.values()) {
-					temp = temp + setting.getTag() + ",";	
-				}
-				temp = temp.replace(temp.substring(temp.length()-1), "");
-				out.println(temp + ")>");
-				for (RobotSettings setting: RobotSettings.values()) {
-					out.println("<!ELEMENT " + setting.getTag() + " (#PCDATA)>");	
-				}
-				out.close();
-				
-				System.out.println("PLEASE SET UP CONFIG FILE!!");
-				
-			}
-		} catch (IOException ioe) {
-			System.err.println(ioe.getMessage());
-		}
-		
+		initializeReader();
 	}
 	
 	/**
@@ -152,10 +118,44 @@ public class XMLReader {
 	    }
 	}
 	
+	private void initializeReader() {
+		new File(homeDir).mkdir();
+		robotConfig = new File(homeDir + "/" + filename + ".xml");
+		
+		// instance of a DocumentBuilderFactory
+	    dbf = DocumentBuilderFactory.newInstance();
+		
+		try {
+			// create files if they don't exist
+			if (!robotConfig.exists()) {
+				robotConfig.createNewFile();
+				// sets up the XML file
+				appendXML(RobotSettings.DRIVE_MOTOR_TYPE, RobotSettings.DRIVE_MOTOR_TYPE.getDefualt());
+				new File(homeDir + "/" + filename + ".dtd").createNewFile();
+				PrintWriter out = new PrintWriter(new BufferedWriter(
+						new FileWriter(homeDir + "/" + filename + ".dtd", true)));
+				
+				out.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+				String temp = "<!ELEMENT config (";
+				for (RobotSettings setting: RobotSettings.values()) {
+					temp = temp + setting.getTag() + ",";	
+				}
+				temp = temp.replace(temp.substring(temp.length()-1), "");
+				out.println(temp + ")>");
+				for (RobotSettings setting: RobotSettings.values()) {
+					out.println("<!ELEMENT " + setting.getTag() + " (#PCDATA)>");	
+				}
+				out.close();				
+			}
+		} catch (IOException ioe) {
+			System.err.println(ioe.getMessage());
+		}
+	}
+	
 	/**
-	 * Run this if you change the RobotSettings file at all, but only run it once
+	 * Run this if you change the RobotSettings file at all
 	 */
-	public void purgeXML() {	
+	public void rewriteXML() {	
 		File robotDTD = new File(homeDir + "/" + filename + ".dtd");
 		
 		// erases config files
@@ -165,6 +165,8 @@ public class XMLReader {
 		if (robotDTD.exists()) {
 			robotDTD.delete();
 		}
+		
+		initializeReader();
 	}
 	
 	private String getTextValue(String def, Element doc, String tag) {
