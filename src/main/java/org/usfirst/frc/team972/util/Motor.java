@@ -53,21 +53,21 @@ public class Motor {
 			return -1;
 	}
 	
-	public static MotorType getMotorType(String readerOutput) {
-		switch (readerOutput) {
-		case "TALON":
-			return MotorType.TALON;
-		case "SPARK":
-			return MotorType.SPARK;
-		case "VICTOR":
-			return MotorType.VICTOR;
-		default:
-			return null;
-		}
-	}
-	
 	public enum MotorType {
 		TALON, SPARK, VICTOR;
+		
+		public static MotorType getMotorType(String readerOutput) {
+			switch (readerOutput) {
+			case "TALON":
+				return MotorType.TALON;
+			case "SPARK":
+				return MotorType.SPARK;
+			case "VICTOR":
+				return MotorType.VICTOR;
+			default:
+				return null;
+			}
+		}
 	}
 
 }

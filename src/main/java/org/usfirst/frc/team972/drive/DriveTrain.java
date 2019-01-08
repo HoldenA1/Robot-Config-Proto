@@ -9,7 +9,7 @@ public class DriveTrain {
 	
 	public DriveTrain(XMLReader reader) {
 		String motorIDs = reader.parseXML(RobotSettings.DRIVE_MOTOR_IDS);
-		MotorType motorType = Motor.getMotorType(reader.parseXML(RobotSettings.DRIVE_MOTOR_TYPE));
+		MotorType motorType = MotorType.getMotorType(reader.parseXML(RobotSettings.DRIVE_MOTOR_TYPE));
 		int motorCount = Integer.parseInt(reader.parseXML(RobotSettings.DRIVE_MOTOR_COUNT));
 		
 		motors = new Motor[motorCount];
