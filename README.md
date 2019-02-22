@@ -1,4 +1,5 @@
 # TODO
+  - [ ] Update to work on 2019 robots
   - [ ] Add sensing to remove the need for first-time setup
   - [ ] Add more features (IMU, NAVX)
 
