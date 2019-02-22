@@ -4,7 +4,7 @@ import org.usfirst.frc.team972.drive.*;
 import org.usfirst.frc.team972.util.*;
 import edu.wpi.first.wpilibj.*;
 
-public class Robot extends IterativeRobot {
+public class Robot extends TimedRobot {
 	final int JOYSTICK_PORT = 0;
 	
 	DriveTrain driveTrain;
